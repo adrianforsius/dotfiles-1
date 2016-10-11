@@ -1,3 +1,19 @@
+filetype off
+call plug#begin('~/.vim/plugged')
+	Plug 'scrooloose/nerdcommenter'
+	Plug 'kien/ctrlp.vim'
+	Plug 'Lokaltog/vim-easymotion'
+	Plug 'editorconfig/editorconfig-vim'
+	Plug 'tpope/vim-fugitive'
+	Plug 'powerline/powerline'
+	Plug 'scrooloose/syntastic'
+	Plug 'mattn/emmet-vim'
+	Plug 'nvie/vim-flake8'
+	Plug 'tell-k/vim-autopep8'
+call plug#end()
+" Filetype indent with plugin possibility load after vundle to avoid errors
+filetype indent plugin on
+
 " Use the Solarized Dark theme
 set background=dark
 colorscheme solarized
@@ -83,18 +99,6 @@ endif
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
 
-" Strip trailing whitespace (,ss)
-function! StripWhitespace()
-	let save_cursor = getpos(".")
-	let old_query = getreg('/')
-	:%s/\s\+$//e
-	call setpos('.', save_cursor)
-	call setreg('/', old_query)
-endfunction
-noremap <leader>ss :call StripWhitespace()<CR>
-" Save a file as root (,W)
-noremap <leader>W :w !sudo tee % > /dev/null<CR>
-
 " Automatic commands
 if has("autocmd")
 	" Enable file type detection
@@ -104,3 +108,8 @@ if has("autocmd")
 	" Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
+
+augroup myvimrc
+	au!
+	au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
