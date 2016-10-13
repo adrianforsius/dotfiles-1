@@ -1,15 +1,16 @@
 filetype off
 call plug#begin('~/.vim/plugged')
 	Plug 'scrooloose/nerdcommenter'
-	Plug 'kien/ctrlp.vim'
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'Lokaltog/vim-easymotion'
 	Plug 'editorconfig/editorconfig-vim'
-	Plug 'tpope/vim-fugitive'
-	Plug 'powerline/powerline'
 	Plug 'scrooloose/syntastic'
 	Plug 'mattn/emmet-vim'
+
+" Syntax and linters
 	Plug 'nvie/vim-flake8'
 	Plug 'tell-k/vim-autopep8'
+	Plug 'mitsuhiko/vim-jinja'
 call plug#end()
 " Filetype indent with plugin possibility load after vundle to avoid errors
 filetype indent plugin on
