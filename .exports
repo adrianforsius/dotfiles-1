@@ -25,14 +25,14 @@ export HISTTIMEFORMAT="%d/%m/%y %T "
 # Add history to bash
 shopt -s histappend
 
-# After each command, save and reload history
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"xport MANPAGER='less -X';
+# Don’t clear the screen after quitting a manual page.
+export MANPAGER='less -X';
 
+# After each command, save and reload history
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
 
 # Highlight section titles in manual pages.
 export LESS_TERMCAP_md="${yellow}";
-
-# Don’t clear the screen after quitting a manual page.
