@@ -1,15 +1,16 @@
 filetype off
 call plug#begin('~/.vim/plugged')
 	Plug 'scrooloose/nerdcommenter'
-	Plug 'kien/ctrlp.vim'
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'Lokaltog/vim-easymotion'
 	Plug 'editorconfig/editorconfig-vim'
-	Plug 'tpope/vim-fugitive'
-	Plug 'powerline/powerline'
 	Plug 'scrooloose/syntastic'
 	Plug 'mattn/emmet-vim'
+
+" Syntax and linters
 	Plug 'nvie/vim-flake8'
 	Plug 'tell-k/vim-autopep8'
+	Plug 'mitsuhiko/vim-jinja'
 call plug#end()
 " Filetype indent with plugin possibility load after vundle to avoid errors
 filetype indent plugin on
@@ -62,6 +63,12 @@ set number
 syntax on
 " Highlight current line
 set cursorline
+" Allow switchin between tabs without save
+set hidden
+" When using tab convert into spaces/tabstop/shiftwidth
+set expandtab
+" Set tabsize
+set shiftwidth=4
 " Make tabs as wide as two spaces
 set tabstop=2
 " Show “invisible” characters
@@ -76,7 +83,7 @@ set incsearch
 " Always show status line
 set laststatus=2
 " Enable mouse in all modes
-set mouse=a
+"set mouse=a
 " Disable error bells
 set noerrorbells
 " Don’t reset cursor to start of line when moving around.
@@ -98,6 +105,11 @@ if exists("&relativenumber")
 endif
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
+
+" Mappings
+nnoremap <C-p> :FZF<cr>
+" Enter after search will cancel highlighting
+nnoremap <cr> :noh<cr><cr>
 
 " Automatic commands
 if has("autocmd")
