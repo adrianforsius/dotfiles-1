@@ -63,6 +63,12 @@ set number
 syntax on
 " Highlight current line
 set cursorline
+" Allow switchin between tabs without save
+set hidden
+" When using tab convert into spaces/tabstop/shiftwidth
+set expandtab
+" Set tabsize
+set shiftwidth=4
 " Make tabs as wide as two spaces
 set tabstop=2
 " Show “invisible” characters
@@ -77,7 +83,7 @@ set incsearch
 " Always show status line
 set laststatus=2
 " Enable mouse in all modes
-set mouse=a
+"set mouse=a
 " Disable error bells
 set noerrorbells
 " Don’t reset cursor to start of line when moving around.
@@ -99,6 +105,11 @@ if exists("&relativenumber")
 endif
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
+
+" Mappings
+nnoremap <C-p> :FZF<cr>
+" Enter after search will cancel highlighting
+nnoremap <cr> :noh<cr><cr>
 
 " Automatic commands
 if has("autocmd")
