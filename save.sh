@@ -8,7 +8,7 @@ if [ -z $dotfiles ]; then
 fi;
 
 function doIt() {
-  for file in ~/.{path,bash_prompt,bash_profile,exports,aliases,functions,extra,vimrc,bashrc,inputrc,screenrc,gitconfig,curlrc,wgetrc}; do
+  for file in ~/.{bash_prompt,bash_profile,exports,aliases,functions,extra,vimrc,bashrc,inputrc,screenrc,gitconfig,curlrc,wgetrc}; do
     cp "$file" ${dotfiles}
   done;
   green='\033[1;32m'
