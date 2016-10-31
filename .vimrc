@@ -25,6 +25,7 @@ set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
 " Enhance command-line completion
+set wildmode=longest,list
 set wildmenu
 " Allow cursor keys in insert mode
 set esckeys
