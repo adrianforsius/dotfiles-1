@@ -2,15 +2,22 @@ filetype off
 call plug#begin('~/.vim/plugged')
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	Plug 'junegunn/fzf.vim'
 	Plug 'Lokaltog/vim-easymotion'
 	Plug 'editorconfig/editorconfig-vim'
 	Plug 'scrooloose/syntastic'
 	Plug 'mattn/emmet-vim'
 
 " Syntax and linters
+	Plug 'rust-lang/rust.vim'
+	Plug 'leafgarland/typescript-vim'
 	Plug 'nvie/vim-flake8'
+	Plug 'vim-erlang/vim-erlang-runtime'
 	Plug 'tell-k/vim-autopep8'
+	Plug 'elixir-editors/vim-elixir'
 	Plug 'mitsuhiko/vim-jinja'
+	Plug 'fatih/vim-go'
+	Plug 'tomlion/vim-solidity'
 call plug#end()
 " Filetype indent with plugin possibility load after vundle to avoid errors
 filetype indent plugin on
@@ -18,6 +25,8 @@ filetype indent plugin on
 " Use the Solarized Dark theme
 set background=dark
 colorscheme solarized
+"let g:solarized_visibility = "high"
+"let g:solarized_contrast = "high"
 let g:solarized_termtrans=1
 
 " Make Vim more useful
@@ -51,6 +60,10 @@ endif
 
 " Don’t create backups when editing files in certain directories
 set backupskip=/tmp/*,/private/tmp/*
+
+" Set history commandline (q:) history size
+set history=10000
+set viminfo+=:10000
 
 " Respect modeline in files
 set modeline
@@ -108,7 +121,9 @@ endif
 set scrolloff=3
 
 " Mappings
+nnoremap <C-L> :GFiles<cr>
 nnoremap <C-p> :FZF<cr>
+
 " Enter after search will cancel highlighting
 nnoremap <cr> :noh<cr><cr>
 
